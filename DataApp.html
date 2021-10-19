@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="form" >
+
+        <div class="bData">
+            <h1>BioData Generator</h1>
+            <h4>By Sandeep Gupta</h4>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="basicDetails">
+
+                        <h3>basic Details</h3>
+                        <label for="name">Name: </label>
+                        <input type="text" placeholder="Enter Your Name" id="name"><br><br>
+
+                        <label>Birth Date: </label>
+                        <input type="date" id="bDate"><br><br>
+
+                        <label>Birth Time: </label>
+                        <input type="time" id="bTime"><br><br>
+
+                        <label>Birth Place: </label>
+                        <input type="text" placeholder="Enter Your Birth Place" id="bPlace"><br><br>
+
+                        <label for="name">height:</label>
+                        <input type="text" placeholder="Enter Your Name" id="height"><br><br>
+
+                        <label for="name">Blood Group: </label>
+                        <input type="text" placeholder="Enter Your Name" id="bGroup"><br><br>
+
+                        <input type="button" value="Submit" id='subData' onclick="SubmitDetails()"
+                            class="btn btn-success">
+                    </div>
+
+                    <!-- educational Details: -->
+
+                    <div id="eDetails">
+                        <h3>Education</h3>
+                        <label> Degree/Certificate:</label>
+                        <input type="text" id="degree"> <br><br>
+
+                        <label> Institute:</label>
+                        <input type="text" id="inst"> <br><br>
+
+                        <label> Board/University:</label>
+                        <input type="text" id="board"> <br><br>
+
+                        <label> Passing Year:</label>
+                        <input type="year" id="year"> <br><br>
+
+                        <label> Aggregate % :</label>
+                        <input type="year" id="agr"> <br><br>
+
+                        <button type="button" id="AddEdu" onclick="AddEducationDeatils()" class="btn btn-success"> Add
+                            Educational Details</button>
+                    </div>
+
+                    <!-- Job Experience -->
+
+
+                </div>
+                <div class="col">
+                    <div id="jobExpDetails">
+                        <h3>Job Experience</h3>
+                        <select id="jobExp">
+                            <option> Experience </option>
+                            <option selected> Fresher </option>
+                        </select><br><br>
+
+                        <label>Title:</label>
+                        <input type="text" id="dlTitle">
+                        <br>
+                        <label for="">Details:</label><br>
+                        <textarea id="dlDetails" cols="50" rows="10"></textarea><br>
+
+                        <button type="button" onclick="AddExperince()" class="btn btn-success"> Add Experience</button>
+                    </div>
+
+                    <!-- Family Details -->
+
+                    <div id="familyDetails">
+                        <h3>Family Details</h3>
+
+                        <label> Grand Father Name : </label>
+                        <input type="text" id="Gname"><br> <br>
+
+                        <label> Father Name : </label>
+                        <input type="text" id="fname"><br><br>
+
+                        <label>Mother Name : </label>
+                        <input type="text" id="mName"><br><br>
+
+                        <label id="bs">Brother/Sister </label>
+                        <select id="b/s" class="bs">
+                            <option value="" selected>Yes</option>
+                            <option value="">No</option>
+                        </select> <br><br>
+
+                        <label> Address : </label>
+                        <input type="text" id="add"><br><br>
+
+                        <label> Residence 1 (owned) </label>
+                        <input type="text" id="residence1"> <br><br>
+
+                        <label> Residence 2 (owned) </label>
+                        <input type="text" id="residence2"> <br><br>
+
+                        <button id="genrate" onclick="AddFData()" type="button" class="btn btn-success">Add family
+                            Data</button> <br><br>
+
+
+                        <label> Add Images: </label>
+                        <input type="file" id="img" accept="image/png, images/jpg"> <br><br>
+                        <input type="button" onclick="UploadImg()" value="Upload Images" class="btn btn-success">
+                    </div> <br>
+
+
+
+                </div>
+            </div>
+            <div id="Gbtn">
+                <button id="genrate" onclick="Generate()" type="button" class="btn btn-success">Generate</button>
+                <button id="genrate" onclick="Print()" type="button" class="btn btn-success">Print</button>
+           
+            </div>
+          
+        </div>
+    </div>
+
+
+    <!-- Show Details -->
+
+    <div id="show" >
+
+    <div class="container sc">
+        <div class="row">
+            <div class="col-md-3">
+                <img id="pic" src="img1.jpg">
+
+            </div>
+            <div class="col-md-6">
+                <div id="showBasicDetails">
+
+                    <label for="name">Name: <span id="sname"> </span> </label> <br> <br>
+
+                    <label>Birth Date: <span id="sBDate"> </span> </label> <br> <br>
+
+                    <label>Birth Time: <span id="sBTime"> </span> </label> <br> <br>
+
+                    <label>Birth Place: <span id="sBPlace"> </span> </label> <br> <br>
+
+                    <label>Colour: <span id="sColor"> </span> </label> <br> <br>
+
+                    <label for="name">height: <span id="sHeight"> </span></label> <br> <br>
+
+                    <label for="name">Blood Group: <span id="bloodGroup"> </span> </label> <br> <br>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- show Educational Dteails -->
+
+    <div class="row ">
+        <div class="col-md-9">
+            <div id="showEducationDetails">
+                <h3>Educational Details:</h3>
+
+                <table id="etable" border>
+                    <thead class="table table-ligh">
+                        <tr>
+                            <th>Degree/Certificate</th>
+                            <th>Institute</th>
+                            <th>Board/University</th>
+                            <th>Passing year</th>
+                            <th>Aggregate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="etbody">
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- show Job Experience Details -->
+
+    <div id="showJobDetails">
+        <h3>Job Experience</h3>
+
+        <h4>Experience : <span id="sExp"></span></h4>
+        <dl id="addExp">
+
+        </dl>
+    </div>
+
+
+    <!-- Family Details -->
+
+    <div id="showfamilyDetails">
+        <h3>Family Details</h3>
+
+        <label> Grand Father Name : <span id="sGFName"></span> </label> <br>
+
+        <label> Father Name :<span id="sFName"></span> </label><br>
+
+        <label>Mother Name : <span id="sMName"></span> </label><br>
+
+
+        <label>Brother/Sister: <span id="sBS"></span> </label><br>
+
+        <label> Address : <span id="address"></span> </label><br>
+
+    </div>
+</div>
+
+
+    <script>
+
+        // function to generate BioData
+
+
+
+        function SubmitDetails() {
+
+            //Basic Details
+
+            //retriveing value form input field
+
+            var name = document.getElementById('name').value;
+            var bDate = document.getElementById('bDate').value;
+            var bTime = document.getElementById('bTime').value;
+            var bPlace = document.getElementById('bPlace').value;
+            var height = document.getElementById('height').value;
+            var bGroup = document.getElementById('bGroup').value;
+           
+            // targeting span location
+
+            var sname = document.getElementById('sname');
+            var sBDate = document.getElementById('sBDate');
+            var sBTime = document.getElementById('sBTime');
+            var sBPlace = document.getElementById('sBPlace');
+            var sHeight = document.getElementById('sHeight');
+            var bloodGroup = document.getElementById('bloodGroup');
+           
+            // assining value to span
+
+            sname.innerText = name;
+            sBDate.innerText = bDate;
+            sBTime.innerText = bTime;
+            sBPlace.innerText = bPlace;
+            sHeight.innerText = height;
+            sname.innerText = name;
+            bloodGroup.innerText = bGroup;
+           
+            alert('details Submited')
+
+        }
+
+
+
+        //add educational 
+
+        function AddEducationDeatils() {
+            var degree = document.getElementById('degree').value;
+            // console.log(degree);
+
+            var inst = document.getElementById('inst').value;
+            // console.log(inst);
+
+            var board = document.getElementById('board').value;
+            // console.log(board);
+
+            var year = document.getElementById('year').value;
+            // console.log(year);
+
+            var agr = document.getElementById('agr').value;
+            // console.log(agr);
+
+            var etbody = document.getElementById('etbody');
+
+            // create element tr 
+
+            var tr = document.createElement('tr');
+
+            // create element td
+
+            var tdForDegree = document.createElement('td');
+            var tdForInst = document.createElement('td');
+            var tdForBoard = document.createElement('td');
+            var tdForYear = document.createElement('td');
+            var tdForAgr = document.createElement('td');
+            var tdForDegree = document.createElement('td');
+
+            // appending value inside td
+
+            tdForDegree.innerText = degree;
+            tdForInst.innerText = inst;
+            tdForBoard.innerText = board;
+            tdForYear.innerText = year;
+            tdForAgr.innerText = agr;
+
+            //appending td inside tr
+
+            tr.appendChild(tdForDegree);
+            tr.appendChild(tdForInst);
+            tr.appendChild(tdForBoard);
+            tr.appendChild(tdForYear);
+            tr.appendChild(tdForAgr);
+
+            //appnding tr inside tbody
+
+            etbody.appendChild(tr);
+
+            //setting input box empty
+
+            document.getElementById('degree').value = "";
+            document.getElementById('inst').value = "";
+            document.getElementById('board').value = "";
+            document.getElementById('year').value = "";
+            document.getElementById('agr').value = "";
+
+            alert('details Submited')
+
+        }
+
+        // Add Experience
+
+        function AddExperince() {
+
+            var dl = document.getElementById('addExp');
+            var exp = document.getElementById('jobExp').value;
+            console.log(exp);
+            if (exp == 'Fresher') {
+                document.getElementById('sExp').innerHTML = 'Fresher';
+            }
+            else {
+                var dtForTitle = document.createElement('dt');
+                var ddForDeatils = document.createElement('dd');
+
+                var dlTitle = document.getElementById('dlTitle').value;
+                console.log(dlTitle);
+                var dlDetails = document.getElementById('dlDetails').value;
+                console.log(dlDetails);
+
+                dtForTitle.innerText = dlTitle + ':';
+                ddForDeatils.innerText = dlDetails;
+
+                dl.appendChild(dtForTitle);
+                dl.appendChild(ddForDeatils);
+
+                alert('Experience Added Successfully! Add More')
+            }
+        }
+
+        // Add Family Data
+
+        function AddFData() {
+
+            //retriving family data from input field
+
+            var Gname = document.getElementById('Gname').value;
+            console.log(Gname);
+            var fname = document.getElementById('fname').value;
+            console.log(fname);
+            var mName = document.getElementById('mName').value;
+            var broSis = document.getElementById('b/s').value;
+            var add = document.getElementById('add').value;
+           
+            // targeting show field
+
+            var sGFName = document.getElementById('sGFName');
+            var sFName = document.getElementById('sFName');
+            var sMName = document.getElementById('sMName');
+            var bSis = document.getElementById('sBS');
+            var address = document.getElementById('address');
+           
+            // assignning value to show field
+
+            sGFName.innerText = Gname;
+            sFName.innerText = fname;
+            sMName.innerText = mName;
+            bSis.innerText = broSis;
+            address.innerText = add;
+           
+            alert('Data Submited')
+
+        }
+
+        //  function to upload img
+
+        function UploadImg() {
+            var img = document.getElementById('img').value;
+            console.log(img);
+
+            var spic = document.getElementById('pic');
+            spic.style.backgroundImage = `url(${img})`;
+
+        }
+
+        // Generate BioData
+
+        function Generate() {
+            AddFData();
+            AddExperince();
+            AddEducationDeatils();
+            SubmitDetails();
+            // UploadImg(); 
+        }
+
+        function Print(){
+            var fm = document.getElementById('form');
+            var show = document.getElementById('show');
+
+            fm.style.display = 'none';
+            show.style.display = 'block';
+            window.print();
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
